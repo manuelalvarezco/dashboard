@@ -25,3 +25,16 @@ a:hover {
 a:hover {
     color: #125699;
 }
+
+
+/* Responsive Styles */
+
+.main {
+    margin-left: 50px;
+}
+
+@media only screen and (max-width: 360px) {
+    .main {
+        margin: 0;
+    }
+}
