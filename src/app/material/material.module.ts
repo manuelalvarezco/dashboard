@@ -1,32 +1,53 @@
+// modulo padre de Angular Material
+// Aqui se incluyen los modulos que se utilizarán en los componentes
 import { NgModule } from '@angular/core';
 import { 
-  MatIconModule,
   MatButtonModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatTabsModule,
+  MatButtonToggleModule,
+  MatIconModule,
+  MatTableModule,
+  MatDividerModule,
+  MatMenuModule,
   MatListModule,
-  MatFormFieldModule,
-  MatInputModule,
+  MatCardModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatCardModule
+  MatInputModule,
+  MatFormFieldModule,
+  MatProgressSpinnerModule,
+  MatSelectModule,
+  MatSnackBarModule
  } from "@angular/material";
 
-
-const material = [
-  MatIconModule,
+ const material = [
   MatButtonModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatTabsModule,
+  MatButtonToggleModule,
+  MatIconModule,
+  MatTableModule,
+  MatDividerModule,
+  MatMenuModule,
   MatListModule,
-  MatFormFieldModule,
-  MatInputModule,
+  MatCardModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatCardModule
+  MatInputModule,
+  MatFormFieldModule,
+  MatProgressSpinnerModule,
+  MatSelectModule,
+  MatSnackBarModule
 ]
 
 @NgModule({
   imports: [
     material
   ],
-  exports: [
+  exports:[
     material
   ]
 })

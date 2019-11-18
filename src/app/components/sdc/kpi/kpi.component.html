@@ -1,0 +1,34 @@
+<div class="mt-4" style="margin-left: 15px; margin-right: 15px;">
+    <div class="row ">
+        <div class="col-md-4">
+            <mat-card style="text-align: -webkit-center;">
+                Total Llamadas <br>
+                <!-- Se oculta cuando carga la data -->
+                <mat-spinner *ngIf="spiner"></mat-spinner>
+                <button mat-icon-button aria-label="touch_app" mat-button (click)="click('llamadas')">
+                            <strong>{{ information.doc_count }}</strong>
+                            <mat-icon>touch_app</mat-icon>
+                        </button>
+            </mat-card>
+        </div>
+        <div class="col-md-4">
+            <mat-card style="text-align: -webkit-center;">
+                Total Ventas <br>
+                <mat-spinner *ngIf="spiner"></mat-spinner>
+                <button mat-button (click)="click('ventas-totales')">
+                                <strong>{{ information | totalSales:'total' }}</strong>
+                            </button>
+            </mat-card>
+        </div>
+        <div class="col-md-4">
+            <mat-card style="text-align: -webkit-center;">
+                Ventas Inbound <br>
+                <mat-spinner *ngIf="spiner"></mat-spinner>
+                <button mat-icon-button aria-label="touch_app" mat-button (click)="click('ventas')">
+                                <strong>{{ information.ventas | inboundSales:'total' }}</strong>
+                                <mat-icon>touch_app</mat-icon>
+                            </button>
+            </mat-card>
+        </div>
+    </div>
+</div>

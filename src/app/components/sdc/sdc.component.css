@@ -1,0 +1,11 @@
+.title_graph {
+    margin: 0 2% 0 0;
+}
+
+.content {
+    min-height: 540px;
+    display: flex;
+    padding: 0 30px;
+    flex-direction: column;
+    background-color: #0606061f;
+}

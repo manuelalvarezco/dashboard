@@ -63,7 +63,7 @@ export class AdwordsService {
     const body = JSON.stringify(forma);
 
     // petición a la Api utilizando el método padre getQuery()
-    //return this.getQuery('/getInfoCampaign',body)
+    return this.getQuery('/getInfoCampaign',body)
     
 
   }
