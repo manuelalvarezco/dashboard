@@ -15,7 +15,7 @@
                         <mat-card class="card">
 
                             <button mat-button (click)="click('clicks')">
-                                <h4>$ {{datos.clicks  | number:'1.0-0'}}</h4>
+                                <h4> {{datos.clicks  | number:'1.0-0'}}</h4>
                             </button>
                             <br><small>Google Ads Clicks</small>
                         </mat-card>
@@ -27,7 +27,7 @@
                         <mat-card class="card">
 
                             <button mat-button (click)="click('costo')">
-                                    <h4>$ {{datos.cost  | number:'1.0-0'}}</h4>
+                                    <h4>$ {{costAdwords | number:'1.2-2'}} {{letraForAdwords}}</h4>
                                 </button>
                             <br><small>Google Ads Cost</small>
                         </mat-card>
@@ -36,7 +36,7 @@
                         <mat-card class="card">
 
                             <button mat-button (click)="click('cpc')">
-                                    <h4>$ {{datos.avgCPC | number:'1.0-0'}}</h4>
+                                    <h4>$ {{datos.avgCPC.slice(0,3)}}</h4>
                                 </button>
                             <br><small>Google Ads Cpc</small>
                         </mat-card>
@@ -67,5 +67,17 @@
                 <canvas id='conversionCampaignChart'></canvas>
             </mat-card>
         </div>
+
+        <div class="col-md-6">
+            <mat-card>
+                <div class="row title_graph">
+                    <h6>Google Ads Cost Per Conversion</h6>
+                </div>
+                <canvas id='costConversionChart'></canvas>
+            </mat-card>
+        </div>
+
+
+
     </div>
 </div>

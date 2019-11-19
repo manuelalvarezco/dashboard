@@ -13,10 +13,10 @@
         </div>
         <div class="col-md-4">
             <mat-card style="text-align: -webkit-center;">
-                Total Ventas <br>
+                Leads <br>
                 <mat-spinner *ngIf="spiner"></mat-spinner>
-                <button mat-button (click)="click('ventas-totales')">
-                                <strong>{{ information | totalSales:'total' }}</strong>
+                <button mat-button>
+                                <strong>{{ total_leads }}</strong>
                             </button>
             </mat-card>
         </div>
