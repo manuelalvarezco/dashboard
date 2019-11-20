@@ -1,18 +1,15 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AdwordsService } from 'src/app/services/adwords.service';
 import { Chart } from 'chart.js';
 import { ToolbarService } from 'src/app/services/toolbar.service';
 import { ClickService } from 'src/app/services/click.service';
 
-
 @Component({
-  selector: 'app-adwords',
-  templateUrl: './adwords.component.html',
-  styleUrls: ['./adwords.component.css']
+  selector: 'app-main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.css']
 })
-export class AdwordsComponent implements OnInit {
-
-  //@ViewChild('mixedChart', { read: ElementRef, static: true }) private mixedChart: ElementRef;
+export class MainComponent implements OnInit {
 
   private bar0: Chart;
   private barraConversions: Chart;
@@ -31,13 +28,7 @@ export class AdwordsComponent implements OnInit {
 
   ngOnInit() {
 
-
-    
-    //se llamada a la función principal 
-	this.initDashboard();
-
-
-
+    this.initDashboard();
   }
 
   initDashboard() {
@@ -555,7 +546,5 @@ export class AdwordsComponent implements OnInit {
   reducerCpc = (acum, arreglo) =>{
     return acum + arreglo.avgCPC
   }
-
-
 
 }

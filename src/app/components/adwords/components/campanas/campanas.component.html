@@ -1,0 +1,88 @@
+<div class="body">
+    <app-sidenav></app-sidenav>
+    <div class="main">
+        <app-toolbar-adwords></app-toolbar-adwords>
+
+        <div class="content" role="main">
+            <div class="m-3">
+                <div class="mt-4" style="margin-left: 15px; margin-right: 15px;">
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <mat-card>
+                                <div class="row title_graph">
+                                    <h6>Clicks</h6>
+                                    <p class="ml-auto">{{valor_ | number:'1.0-0' }}</p>
+                                </div>
+                                <canvas id='clicksChart'></canvas>
+                            </mat-card>
+                        </div>
+
+                        <div class="col-md-6">
+                            <mat-card>
+                                <div class="row title_graph">
+                                    <h6>Clicks per Campaigns</h6>
+                                    <p class="ml-auto">{{valor_ | number:'1.0-0' }}</p>
+                                </div>
+                                <canvas id='clicksCampaignsChart'></canvas>
+                            </mat-card>
+                        </div>
+
+
+
+                    </div>
+
+
+                    <div *ngIf="datos">
+                        <div class="row mt-4">
+
+                            <div class="col-md-4">
+                                <mat-card class="text-center">
+                                    <h3>{{datos.clicks | number:'1.0-0' }}</h3>
+                                    <small>Clicks</small>
+                                </mat-card>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-card class="text-center">
+                                    <h3>{{datos.impressions | number:'1.0-0' }}</h3>
+                                    <small>Impresions</small>
+                                </mat-card>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-card class="text-center">
+                                    <h3>{{costAdwords | number:'1.0-0'}} {{letraForAdwords}}</h3>
+                                    <small>Cost</small>
+                                </mat-card>
+                            </div>
+
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-4">
+                                <mat-card class="text-center">
+                                    <h3>{{datos.conversions | number:'1.0-0' }}</h3>
+                                    <small>Conversions</small>
+                                </mat-card>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-card class="text-center">
+                                    <h3>$ {{datos.convRate}}</h3>
+                                    <small>Conversion Rate</small>
+                                </mat-card>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-card class="text-center">
+                                    <h3>$ {{datos.avgCPC.slice(0,3)}}</h3>
+                                    <small>Average CPC</small>
+                                </mat-card>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

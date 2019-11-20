@@ -1,23 +1,22 @@
-import { Component,OnInit, Output, EventEmitter, HostListener  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import * as moment from 'moment'
 import { ToolbarService } from 'src/app/services/toolbar.service';
 
-
 @Component({
-  selector: 'app-toolbar',
-  templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.css']
+  selector: 'app-toolbar-adwords',
+  templateUrl: './toolbar-adwords.component.html',
+  styleUrls: ['./toolbar-adwords.component.css']
 })
-export class ToolbarComponent implements OnInit {
+export class ToolbarAdwordsComponent implements OnInit {
 
-  
+  userName = '';
 
-  constructor(private _toolbarService:ToolbarService) { }
+  constructor(private _toolbarService: ToolbarService) { }
 
   ngOnInit() {
 
-    
+    this.leerNombre()
   }
 
   general:any = {
@@ -46,11 +45,16 @@ export class ToolbarComponent implements OnInit {
     
   }
 
-  @HostListener('click')
-  opened() {
-    this._toolbarService.toggle();
-  }
+  leerNombre(){
 
-  
+    if(localStorage.getItem('nombre')){
+
+      this.userName = localStorage.getItem('nombre');
+    }else{
+
+      this.userName = '';
+
+    }
+  }
 
 }
