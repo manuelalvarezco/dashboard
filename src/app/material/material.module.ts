@@ -19,8 +19,11 @@ import {
   MatFormFieldModule,
   MatProgressSpinnerModule,
   MatSelectModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatExpansionModule,
+  MatRadioModule
  } from "@angular/material";
+ import {ScrollingModule} from '@angular/cdk/scrolling';
 
  const material = [
   MatButtonModule,
@@ -40,7 +43,10 @@ import {
   MatFormFieldModule,
   MatProgressSpinnerModule,
   MatSelectModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatExpansionModule,
+  MatRadioModule,
+  ScrollingModule
 ]
 
 @NgModule({

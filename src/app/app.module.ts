@@ -27,6 +27,7 @@ import { CampanasComponent } from './components/adwords/components/campanas/camp
 import { ToolbarAdwordsComponent } from './components/adwords/components/toolbar-adwords/toolbar-adwords.component';
 import { TopbarComponent } from './components/toolbar/components/topbar/topbar.component';
 import { MainComponent } from './components/adwords/components/main/main.component';
+import { AdGroupsComponent } from './components/adwords/components/ad-groups/ad-groups.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { MainComponent } from './components/adwords/components/main/main.compone
     CampanasComponent,
     ToolbarAdwordsComponent,
     TopbarComponent,
-    MainComponent
+    MainComponent,
+    AdGroupsComponent
   ],
   imports: [
     BrowserModule,

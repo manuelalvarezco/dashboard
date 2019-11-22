@@ -1,0 +1,56 @@
+<div class="body">
+    <app-sidenav></app-sidenav>
+    <div class="main">
+        <app-toolbar-adwords></app-toolbar-adwords>
+
+        <div class="content" role="main">
+            <button *ngIf="nombreCampanas" mat-icon-button color="primary" class="btn-open ml-auto" aria-label="filter" (click)="abrir()">
+                <mat-icon>filter_list</mat-icon>
+            </button>
+            <div class="sidenav" *ngIf="opened">
+                <button mat-icon-button color="primary" class="btn-open ml-auto" aria-label="filter" (click)="cerrar()">
+                    <mat-icon>filter_list</mat-icon>
+                </button>
+                <div class="ml-4">
+                    <label id="example-radio-group-label">Campaigns</label>
+                    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="favoriteSeason">
+                        <mat-radio-button class="example-radio-button" *ngFor="let campana of nombreCampanas" [value]="campana">
+                            {{campana}}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>
+            <div class="m-3">
+                <div class="mt-4" style="margin-left: 15px; margin-right: 15px;">
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <mat-card>
+                                <div class="row title_graph">
+                                    <h6>Clicks</h6>
+                                    <p class="ml-auto"></p>
+                                </div>
+                                <canvas id='clicksChart'></canvas>
+                            </mat-card>
+                        </div>
+
+                        <div class="col-md-6">
+                            <mat-card>
+                                <div class="row title_graph">
+                                    <h6>Clicks per AdGroups</h6>
+                                    <p class="ml-auto"></p>
+                                </div>
+                                <canvas id='clicksCampaignsChart'></canvas>
+                            </mat-card>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

@@ -1,3 +1,40 @@
 .title_graph {
     margin: 0 2% 0 0;
 }
+
+.content {
+    min-height: 540px;
+    display: flex;
+    padding: 0 30px;
+    flex-direction: column;
+    background-color: #06060612;
+}
+
+a,
+a:visited,
+a:hover {
+    color: #1976d2;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #125699;
+}
+
+
+/* Responsive Styles */
+
+.main {
+    margin-left: 50px;
+}
+
+@media only screen and (max-width: 360px) {
+    .main {
+        margin: 0;
+    }
+}
+
+.router-link-active {
+    border: 1px solid #ccc;
+    border-radius: 10%;
+}
