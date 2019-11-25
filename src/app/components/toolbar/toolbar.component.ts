@@ -1,4 +1,4 @@
-import { Component,OnInit, Output, EventEmitter, HostListener  } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import * as moment from 'moment'
 import { ToolbarService } from 'src/app/services/toolbar.service';
@@ -22,8 +22,7 @@ export class ToolbarComponent implements OnInit {
 
   general:any = {
     startDate : new Date(),
-    endDate : new Date(),
-    select : ''
+    endDate : new Date()
   }
 
   buscar(forma:NgForm){
@@ -40,16 +39,12 @@ export class ToolbarComponent implements OnInit {
       account : account
     }
 
-   this._toolbarService.cambiarFecha(form)
+    this._toolbarService.cambiarFecha(form)
    
    
     
   }
 
-  @HostListener('click')
-  opened() {
-    this._toolbarService.toggle();
-  }
 
   
 

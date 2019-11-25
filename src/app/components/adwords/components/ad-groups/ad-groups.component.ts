@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { ToolbarService } from 'src/app/services/toolbar.service';
 import { AdwordsService } from 'src/app/services/adwords.service';
+import { ClickService } from 'src/app/services/click.service';
 
 @Component({
   selector: 'app-ad-groups',
@@ -25,8 +26,9 @@ export class AdGroupsComponent implements OnInit {
   costAdwords;
   letraForAdwords = '';
   opened = false;
+  campaignId:any;
 
-  constructor(private adwordService:AdwordsService,private _toolbarService:ToolbarService) { }
+  constructor(private adwordService:AdwordsService,private _toolbarService:ToolbarService, private _clickService:ClickService) { }
 
   ngOnInit() {
     this.initDashboard();
@@ -48,12 +50,14 @@ export class AdGroupsComponent implements OnInit {
         ultimo = this.forma.length - 1 ;
       }
 
+      
+
       this.adwordService.getInfoAdGroups(this.forma[ultimo])
         .subscribe( data => {
 
           this.clicksAdGroups = data
           
-          this.chartClicksCampaign()
+          this.chartClicksAdGroups()
         })
 
 
@@ -64,43 +68,89 @@ export class AdGroupsComponent implements OnInit {
             this.chartClicks()
           })
 
-          // se llamada el servivio que hace la petición a la Api services/AdwordsService
-    this.adwordService.getInfoAccount(this.forma[ultimo])
-    .subscribe( (resp:any) =>{
-      this.datos = resp
-      
-      this.costAdwords = resp.cost;
+        // se llamada el servivio que hace la petición a la Api services/AdwordsService
+        this.adwordService.getInfoAdGroup(this.forma[ultimo])
+        .subscribe( (resp:any) =>{
 
-
-      if(this.costAdwords.length < 13){
-
-        this.letraForAdwords = 'K';
-        this.costAdwords = this.costAdwords.slice(0,3);
-
-      }else if(this.costAdwords.length > 12 && this.costAdwords.length < 14) {
-
-        this.letraForAdwords = 'M';
-        this.costAdwords = this.costAdwords.slice(0,4);
-
-      }else{
-        this.letraForAdwords = 'M';
-        this.costAdwords = this.costAdwords.slice(0,2);
-      }
-      
-    })
-
-    this.adwordService.getInfoCampaign(this.forma[ultimo])
-      .subscribe( (data:any)=>{
-        this.seasons = data
-
-        for(let item of this.seasons) {
-
-          this.nombreCampanas.push(item.campaign.name[0])
+          this.datos = resp
           
-        }
+          
+          
+        })
 
-      })
-      
+          
+
+          this.adwordService.getInfoCampaign(this.forma[ultimo])
+          .subscribe( (data:any)=>{
+            
+            this.seasons = data
+
+            
+
+            for(let item of this.seasons) {
+
+              this.nombreCampanas.push(item.campaign)
+            }
+
+          })
+
+          // se llamada el servivio que hace la petición a la Api services/AdwordsService
+          this.adwordService.getInfoAccount(this.forma[ultimo])
+          .subscribe( (resp:any) =>{
+            this.datos = resp
+            
+            this.costAdwords = resp.cost;
+
+
+            if(this.costAdwords.length < 13){
+
+              this.letraForAdwords = 'K';
+              this.costAdwords = this.costAdwords.slice(0,3);
+
+            }else if(this.costAdwords.length > 12 && this.costAdwords.length < 14) {
+
+              this.letraForAdwords = 'M';
+              this.costAdwords = this.costAdwords.slice(0,4);
+
+            }else{
+              this.letraForAdwords = 'M';
+              this.costAdwords = this.costAdwords.slice(0,2);
+            }
+            
+          })
+
+          
+          this._clickService.click$.subscribe( data =>{
+
+            
+
+            // se asigna la respuesta al arreglo 
+            this.campaignId = data
+
+            
+
+            // se obtiene el tamaño del arreglo 
+            let ultimo = this.campaignId.length;
+
+            
+
+            // se valida la cantidad de llamado al arreglo de fechas
+            if(this.campaignId.length > 0){
+              ultimo = this.campaignId.length - 1 ;
+            }
+
+            
+
+            this.adwordService.getInfoAdGroups({"campaignId":this.campaignId[ultimo]})
+              .subscribe( data =>{
+                this.clicksAdGroups = data
+          
+                this.chartClicksAdGroups()
+              })
+            
+          })
+    
+    
 
       
 
@@ -109,7 +159,7 @@ export class AdGroupsComponent implements OnInit {
   }
 
   // instancia del chart chartClicksCampaign
-  private chartClicksCampaign() {
+  private chartClicksAdGroups() {
     const labelsMix = [];
     const llamadasMix = [];
     const colorBar = [];
@@ -132,7 +182,7 @@ export class AdGroupsComponent implements OnInit {
       
       
       if(item.clicks[0] != 0 ){
-        labelsMix.push(item.adGroup[0].slice(15,25));
+        labelsMix.push(item.adGroup[0]);
         llamadasMix.push(item.clicks[0]);
       }
 
@@ -140,12 +190,12 @@ export class AdGroupsComponent implements OnInit {
     }
   
     if (this.barraClicks) {
-
+      this.barraClicks.clear();
       this.barraClicks.destroy();
     }
     
     // se crea el chart
-    this.barraClicks = new Chart('clicksCampaignsChart', {
+    this.barraClicks = new Chart('clicksAdGroupsChart', {
       type: 'bar',
       data: {
         datasets: [
@@ -183,6 +233,7 @@ export class AdGroupsComponent implements OnInit {
     }
 
     if (this.lineClicks) {
+      this.lineClicks.clear();
       this.lineClicks.destroy();
     }
     
@@ -225,6 +276,16 @@ export class AdGroupsComponent implements OnInit {
 
   cerrar(){
     this.opened = false;
+  }
+
+  apply(favoriteSeason){
+    
+    this._clickService.esClickeado(favoriteSeason)
+    
+    setTimeout( ()=>{
+      this.opened = false;
+    },2000)
+
   }
 
 }

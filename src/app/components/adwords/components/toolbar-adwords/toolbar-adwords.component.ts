@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import * as moment from 'moment'
 import { ToolbarService } from 'src/app/services/toolbar.service';
+import { ClickService } from 'src/app/services/click.service';
 
 @Component({
   selector: 'app-toolbar-adwords',
@@ -11,12 +12,16 @@ import { ToolbarService } from 'src/app/services/toolbar.service';
 export class ToolbarAdwordsComponent implements OnInit {
 
   userName = '';
+  campaignId:any;
 
-  constructor(private _toolbarService: ToolbarService) { }
+
+  constructor(private _toolbarService: ToolbarService, private _clickService:ClickService) { }
 
   ngOnInit() {
 
-    this.leerNombre()
+    this.leerNombre();
+  
+    this.dato();
   }
 
   general:any = {
@@ -36,7 +41,7 @@ export class ToolbarAdwordsComponent implements OnInit {
     const form = {
       startDate: startDate,
       endDate : endDate,
-      account : account
+      campaignId : this.campaignId
     }
 
    this._toolbarService.cambiarFecha(form)
@@ -55,6 +60,31 @@ export class ToolbarAdwordsComponent implements OnInit {
       this.userName = '';
 
     }
+  }
+
+  dato(){
+    this._clickService.click$.subscribe( data =>{
+      
+      
+       // se asigna la respuesta al arreglo 
+       this.campaignId = data
+
+            
+
+       // se obtiene el tamaño del arreglo 
+       let ultimo = this.campaignId.length;
+
+       
+
+       // se valida la cantidad de llamado al arreglo de fechas
+       if(this.campaignId.length > 0){
+         ultimo = this.campaignId.length - 1 ;
+
+       }
+
+       this.campaignId = this.campaignId[ultimo]
+      
+    })
   }
 
 }

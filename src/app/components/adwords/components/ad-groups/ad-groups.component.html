@@ -7,20 +7,26 @@
             <button *ngIf="nombreCampanas" mat-icon-button color="primary" class="btn-open ml-auto" aria-label="filter" (click)="abrir()">
                 <mat-icon>filter_list</mat-icon>
             </button>
-            <div class="sidenav" *ngIf="opened">
+            <div class="sidenav animated fadeIn fast" *ngIf="opened">
                 <button mat-icon-button color="primary" class="btn-open ml-auto" aria-label="filter" (click)="cerrar()">
-                    <mat-icon>filter_list</mat-icon>
+                    <mat-icon>close</mat-icon>
                 </button>
                 <div class="ml-4">
                     <label id="example-radio-group-label">Campaigns</label>
-                    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="favoriteSeason">
-                        <mat-radio-button class="example-radio-button" *ngFor="let campana of nombreCampanas" [value]="campana">
-                            {{campana}}
-                        </mat-radio-button>
-                    </mat-radio-group>
+                    <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+                        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="favoriteSeason">
+                            <mat-radio-button class="example-radio-button" class="example-item" [value]="">
+                                Todas
+                            </mat-radio-button>
+                            <mat-radio-button class="example-radio-button" *cdkVirtualFor="let campana of nombreCampanas" class="example-item" [value]="campana.campaignId[0]">
+                                {{campana.name[0]}}
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </cdk-virtual-scroll-viewport>
+                    <button mat-raised-button (click)="apply(favoriteSeason)">Apply</button>
                 </div>
             </div>
-            <div class="m-3">
+            <div>
                 <div class="mt-4" style="margin-left: 15px; margin-right: 15px;">
                     <div class="row ">
                         <div class="col-md-6">
@@ -39,12 +45,58 @@
                                     <h6>Clicks per AdGroups</h6>
                                     <p class="ml-auto"></p>
                                 </div>
-                                <canvas id='clicksCampaignsChart'></canvas>
+                                <canvas id='clicksAdGroupsChart'></canvas>
                             </mat-card>
                         </div>
 
 
 
+                    </div>
+
+                    <div *ngIf="datos">
+                        <div class="row mt-4">
+
+                            <div class="col-md-4">
+                                <mat-card class="text-center">
+                                    <h3>{{datos.clicks | number:'1.0-0' }}</h3>
+                                    <small>Clicks</small>
+                                </mat-card>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-card class="text-center">
+                                    <h3>{{datos.impressions | number:'1.0-0' }}</h3>
+                                    <small>Impresions</small>
+                                </mat-card>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-card class="text-center">
+                                    <h3>{{costAdwords | number:'1.0-0'}} </h3>
+                                    <small>Cost</small>
+                                </mat-card>
+                            </div>
+
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-4">
+                                <mat-card class="text-center">
+                                    <h3>{{datos.conversions | number:'1.0-0' }}</h3>
+                                    <small>Conversions</small>
+                                </mat-card>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-card class="text-center">
+                                    <h3>$ {{datos.convRate}}</h3>
+                                    <small>Conversion Rate</small>
+                                </mat-card>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-card class="text-center">
+                                    <h3>$ {{datos.avgCPC}}</h3>
+                                    <small>Average CPC</small>
+                                </mat-card>
+                            </div>
+                        </div>
                     </div>
 
                 </div>

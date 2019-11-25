@@ -12,23 +12,12 @@
     right: 0;
 }
 
-.sidenavs {
-    height: 100%;
-    width: 50px;
-    position: absolute;
-    z-index: 1;
-    right: 0;
-    background-color: transparent;
-    padding-top: 16px;
-}
-
 .sidenav {
-    height: 100%;
     position: absolute;
     z-index: 1;
     right: 0;
     background-color: white;
-    padding-top: 16px;
+    padding: 0 0 2% 0;
     -webkit-transition: width 0.5s;
     /* Safari prior 6.1 */
     transition: width 0.5s;
@@ -42,4 +31,13 @@
 
 .example-radio-button {
     margin: 5px;
+}
+
+.example-viewport {
+    height: 300px;
+    width: 400px;
+}
+
+.example-item {
+    height: 50px;
 }

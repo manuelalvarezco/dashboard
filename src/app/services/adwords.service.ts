@@ -69,6 +69,20 @@ export class AdwordsService {
   }
 
   // información de la cuenta a nivel de campaña
+  getInfoAdGroup(forma){
+
+    // parsear la forma(fechas) que se recibe
+    const body = JSON.stringify(forma);
+
+    // petición a la Api utilizando el método padre getQuery()
+    return this.getQuery('/getInfoAdGroup',body)
+    
+
+  }
+
+
+
+  // información de la cuenta a nivel de campaña
   getInfoAdGroups(forma){
 
     // parsear la forma(fechas) que se recibe

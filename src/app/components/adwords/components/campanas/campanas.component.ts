@@ -63,29 +63,29 @@ export class CampanasComponent implements OnInit {
           })
 
           // se llamada el servivio que hace la petición a la Api services/AdwordsService
-    this.adwordService.getInfoAccount(this.forma[ultimo])
-    .subscribe( (resp:any) =>{
-      this.datos = resp
-      
-      this.costAdwords = resp.cost;
+          this.adwordService.getInfoAccount(this.forma[ultimo])
+          .subscribe( (resp:any) =>{
+            this.datos = resp
+            
+            this.costAdwords = resp.cost;
 
 
-      if(this.costAdwords.length < 13){
+            if(this.costAdwords.length < 13){
 
-        this.letraForAdwords = 'K';
-        this.costAdwords = this.costAdwords.slice(0,3);
+              this.letraForAdwords = 'K';
+              this.costAdwords = this.costAdwords.slice(0,3);
 
-      }else if(this.costAdwords.length > 12 && this.costAdwords.length < 14) {
+            }else if(this.costAdwords.length > 12 && this.costAdwords.length < 14) {
 
-        this.letraForAdwords = 'M';
-        this.costAdwords = this.costAdwords.slice(0,4);
+              this.letraForAdwords = 'M';
+              this.costAdwords = this.costAdwords.slice(0,4);
 
-      }else{
-        this.letraForAdwords = 'M';
-        this.costAdwords = this.costAdwords.slice(0,2);
-      }
-      
-    })
+            }else{
+              this.letraForAdwords = 'M';
+              this.costAdwords = this.costAdwords.slice(0,2);
+            }
+            
+          })
 
 
     })
