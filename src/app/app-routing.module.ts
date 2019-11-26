@@ -5,13 +5,15 @@ import { LoginComponent } from './components/login/login.component';
 import { CampanasComponent } from './components/adwords/components/campanas/campanas.component';
 import { AdwordsComponent } from './components/adwords/components/adwords/adwords.component';
 import { AdGroupsComponent } from './components/adwords/components/ad-groups/ad-groups.component';
+import { KeywordsComponent } from './components/adwords/components/keywords/keywords.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'adwords/campaigns', component: CampanasComponent },
-  { path: 'adwords/adgroups', component: AdGroupsComponent }
+  { path: 'adwords/adgroups', component: AdGroupsComponent },
+  { path: 'adwords/keywords', component: KeywordsComponent }
 ];
 
 @NgModule({

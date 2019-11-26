@@ -72,10 +72,27 @@ export class AdGroupsComponent implements OnInit {
         this.adwordService.getInfoAdGroup(this.forma[ultimo])
         .subscribe( (resp:any) =>{
 
+
           this.datos = resp
-          
-          
-          
+
+          this.costAdwords = resp.cost;
+
+
+            if(this.costAdwords.length < 13){
+
+              this.letraForAdwords = 'K';
+              this.costAdwords = this.costAdwords.slice(0,3);
+
+            }else if(this.costAdwords.length > 12 && this.costAdwords.length < 14) {
+
+              this.letraForAdwords = 'M';
+              this.costAdwords = this.costAdwords.slice(0,4);
+
+            }else{
+              this.letraForAdwords = 'M';
+              this.costAdwords = this.costAdwords.slice(0,2);
+            }
+         
         })
 
           
@@ -89,7 +106,9 @@ export class AdGroupsComponent implements OnInit {
 
             for(let item of this.seasons) {
 
-              this.nombreCampanas.push(item.campaign)
+              if(item.clicks[0] != 0 ){
+                this.nombreCampanas.push(item.campaign)
+              }
             }
 
           })

@@ -70,7 +70,7 @@
                             </div>
                             <div class="col-md-4">
                                 <mat-card class="text-center">
-                                    <h3>{{costAdwords | number:'1.0-0'}} </h3>
+                                    <h3>{{costAdwords | number:'1.0-0'}} {{letraForAdwords}}</h3>
                                     <small>Cost</small>
                                 </mat-card>
                             </div>
@@ -92,7 +92,7 @@
                             </div>
                             <div class="col-md-4">
                                 <mat-card class="text-center">
-                                    <h3>$ {{datos.avgCPC}}</h3>
+                                    <h3>$ {{datos.avgCPC.slice(0,3)}}</h3>
                                     <small>Average CPC</small>
                                 </mat-card>
                             </div>

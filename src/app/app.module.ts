@@ -28,6 +28,7 @@ import { ToolbarAdwordsComponent } from './components/adwords/components/toolbar
 import { TopbarComponent } from './components/toolbar/components/topbar/topbar.component';
 import { MainComponent } from './components/adwords/components/main/main.component';
 import { AdGroupsComponent } from './components/adwords/components/ad-groups/ad-groups.component';
+import { KeywordsComponent } from './components/adwords/components/keywords/keywords.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { AdGroupsComponent } from './components/adwords/components/ad-groups/ad-
     ToolbarAdwordsComponent,
     TopbarComponent,
     MainComponent,
-    AdGroupsComponent
+    AdGroupsComponent,
+    KeywordsComponent
   ],
   imports: [
     BrowserModule,

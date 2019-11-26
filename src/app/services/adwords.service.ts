@@ -76,6 +76,13 @@ export class AdwordsService {
 
     // petición a la Api utilizando el método padre getQuery()
     return this.getQuery('/getInfoAdGroup',body)
+    .pipe(
+      map((resp:any)=>{
+        resp = resp['@attributes']
+        return resp
+      })
+
+    )
     
 
   }
