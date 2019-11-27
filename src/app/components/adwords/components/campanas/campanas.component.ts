@@ -48,7 +48,7 @@ export class CampanasComponent implements OnInit {
 
       this.adwordService.getInfoCampaign(this.forma[ultimo])
         .subscribe( data => {
-
+          
           this.conversionCampaigns = data
           
           this.chartClicksCampaign()

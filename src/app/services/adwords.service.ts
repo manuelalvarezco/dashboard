@@ -68,7 +68,7 @@ export class AdwordsService {
 
   }
 
-  // información de la cuenta a nivel de campaña
+  // información de los grupos de anuncios a nivel general
   getInfoAdGroup(forma){
 
     // parsear la forma(fechas) que se recibe
@@ -87,9 +87,7 @@ export class AdwordsService {
 
   }
 
-
-
-  // información de la cuenta a nivel de campaña
+  // información de los grupos de anuncios por días
   getInfoAdGroups(forma){
 
     // parsear la forma(fechas) que se recibe
@@ -101,5 +99,16 @@ export class AdwordsService {
 
   }
 
+   // información de los anuncios
+   getInfoAd(forma){
+
+    // parsear la forma(fechas) que se recibe
+    const body = JSON.stringify(forma);
+
+    // petición a la Api utilizando el método padre getQuery()
+    return this.getQuery('/getInfoAd',body)
+    
+
+  }
 
 }

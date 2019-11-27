@@ -139,7 +139,7 @@ export class AdGroupsComponent implements OnInit {
           })
 
           
-          this._clickService.click$.subscribe( data =>{
+          this._clickService.adwordsPerCampaign$.subscribe( data =>{
 
             
 
@@ -299,7 +299,7 @@ export class AdGroupsComponent implements OnInit {
 
   apply(favoriteSeason){
     
-    this._clickService.esClickeado(favoriteSeason)
+    this._clickService.filtroAdwordsPerCampaign(favoriteSeason)
     
     setTimeout( ()=>{
       this.opened = false;

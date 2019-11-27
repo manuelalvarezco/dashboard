@@ -12,13 +12,7 @@
                     <a class="nav-link" [routerLink]="['/adwords/adgroups']" routerLinkActive="router-link-active">Ad Groups</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/adwords/keywords']" routerLinkActive="router-link-active">Keywords</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Ads</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Conversions</a>
+                    <a class="nav-link" [routerLink]="['/adwords/ad']" routerLinkActive="router-link-active">Ads</a>
                 </li>
             </ul>
             <form (ngSubmit)="buscar(forma)" #forma="ngForm">

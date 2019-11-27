@@ -11,10 +11,16 @@ export class ClickService {
   private dato = new BehaviorSubject<any[]>([]);
 
   click$ = this.dato.asObservable();
+  adwordsPerCampaign$ = this.dato.asObservable();
 
   constructor() { }
 
   esClickeado(dato:string){
+    this.clicks = [...this.clicks, dato]
+    this.dato.next(this.clicks);
+  }
+
+  filtroAdwordsPerCampaign(dato:string){
     this.clicks = [...this.clicks, dato]
     this.dato.next(this.clicks);
   }

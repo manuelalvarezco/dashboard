@@ -6,6 +6,7 @@ import { CampanasComponent } from './components/adwords/components/campanas/camp
 import { AdwordsComponent } from './components/adwords/components/adwords/adwords.component';
 import { AdGroupsComponent } from './components/adwords/components/ad-groups/ad-groups.component';
 import { KeywordsComponent } from './components/adwords/components/keywords/keywords.component';
+import { AdComponent } from './components/adwords/components/ad/ad.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -13,7 +14,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'adwords/campaigns', component: CampanasComponent },
   { path: 'adwords/adgroups', component: AdGroupsComponent },
-  { path: 'adwords/keywords', component: KeywordsComponent }
+  { path: 'adwords/ad', component: AdComponent }
 ];
 
 @NgModule({
